@@ -213,7 +213,7 @@ console.log('LinkedList values --------->')
 console.log(linkedList.printList());
 
 console.log('LinkedList shift --------->')
-linkedList.shift();
+console.log(linkedList.shift());
 console.log('LinkedList values --------->')
 console.log(linkedList.printList());
 
