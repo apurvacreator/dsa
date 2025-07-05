@@ -48,6 +48,19 @@ class HashTable {
         }
         return undefined;
     }
+
+    // Returns all the keys in hashtable
+    keys() {
+        let allKeys = [];
+        for(let i = 0; i < this.dataMap.length; i++){
+            if(this.dataMap[i]){
+                for(const [key] of this.dataMap[i]){
+                    allKeys.push(key);
+                }
+            }
+        }
+        return allKeys;
+    }
 }
 
 const hashTable = new HashTable();
@@ -56,4 +69,6 @@ hashTable.set('mangoes', 10);
 
 console.log(hashTable.get('mangoes'));
 
-hashTable.printTable()
+hashTable.printTable();
+
+console.log(hashTable.keys());
