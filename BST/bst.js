@@ -128,6 +128,65 @@ class BST {
     rDelete(value) {
         this.root = this.#rDelete(value, this.root);
     }
+
+    /**
+     * 
+     * Tree Traversal operations
+     * Return the node values of a BST in a certain order
+     * BFS
+     * DFS - PreOrder
+     * DFS - PostOrder
+     * DFS - InOrder
+     */
+
+    BFS() {
+        let currentNode = this.root;
+        let queue = [];
+        let results = [];
+        queue.push(currentNode);
+
+        while(queue.length) {
+            currentNode = queue.shift();
+            results.push(currentNode.value);
+            if(currentNode.left) queue.push(currentNode.left);
+            if(currentNode.right) queue.push(currentNode.right);
+        }
+
+        return results;
+    }
+
+    DFSPreOrder() {
+        let results = [];
+        function traverse(currentNode) {
+            results.push(currentNode.value);
+            if(currentNode.left) traverse(currentNode.left);
+            if(currentNode.right) traverse(currentNode.right);
+        }
+        traverse(this.root);
+        return results;
+    }
+
+    DFSPostOrder() {
+        let results = [];
+        function traverse(currentNode) {
+            if(currentNode.left) traverse(currentNode.left);
+            if(currentNode.right) traverse(currentNode.right);
+            results.push(currentNode.value);
+        }
+        traverse(this.root);
+        return results;
+    }
+
+    DFSInOrder() {
+        let results = [];
+        function traverse(currentNode) {
+            if(currentNode.left) traverse(currentNode.left);
+            results.push(currentNode.value);
+            if(currentNode.right) traverse(currentNode.right);
+        }
+        traverse(this.root);
+        return results;
+    }
 }
 
 const bst = new BST();
@@ -137,6 +196,16 @@ bst.insert(29);
 bst.insert(75);
 bst.insert(56);
 bst.insert(82);
+
+console.log('bst -> ', bst.root);
+console.log('Tree Traversal results ---->');
+console.log('BFS', bst.BFS());
+console.log('DFSPreOrder', bst.DFSPreOrder());
+console.log('BDFSPostOrder', bst.DFSPostOrder());
+console.log('DFSInOrder', bst.DFSInOrder());
+
+console.log('------------------------');
+
 console.log('contains 31 -->', bst.contains(31)); // true
 console.log('contains 45 -->', bst.contains(45)); // false
 
