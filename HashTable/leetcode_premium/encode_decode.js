@@ -2,13 +2,13 @@ function encode(arr) {
   for (let i = 0; i < arr.length; i++) {
     arr[i] = `${arr[i].length}#${arr[i]}`;
   }
-  return arr.join("");
+  return arr.join('');
 }
 
-const input = ["neet", "code", "love", "you"];
-console.log("input =>", input);
+const input = ['neet', 'code', 'love', 'you'];
+console.log('input =>', input);
 const encoded = encode(input);
-console.log("encoded =>", encoded);
+console.log('encoded =>', encoded);
 
 function decode(encoded) {
   let decoded = [];
@@ -26,17 +26,17 @@ function decode(encoded) {
 
   while (i < encoded.length) {
     let j = i;
-    while (encoded[j] !== "#") {
+    while (encoded[j] !== '#') {
       j++;
     }
     let length = +encoded.substring(i, j);
     i = j + 1;
     j = i + length;
-    decoded.push(encoded.substring(2, 6));
+    decoded.push(encoded.substring(i, j));
     i = j;
   }
   return decoded;
 }
 
 const decoded = decode(encoded);
-console.log("decoded =>", decoded);
+console.log('decoded =>', decoded);
